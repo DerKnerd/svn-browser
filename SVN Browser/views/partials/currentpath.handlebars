@@ -1,0 +1,7 @@
+﻿{{#if currentposition.length}}
+<ol class="breadcrumb">
+    {{#each currentposition}}
+    <li class="{{#if @index}}active{{/if}}"><a href="{{link}}">{{foldername}}</a></li>
+    {{/each}}
+</ol>
+{{/if}}
