@@ -43,7 +43,7 @@ app.engine('handlebars', hbs.engine)
 app.set('view engine', 'handlebars')
 app.set('port', process.env.PORT || 3000)
 app.set('secureport', app.get('port') + 1)
-app.set('svnserver', 'subversion.netrada.com')
+app.set('svnserver', 'subversion')
 app.use(express.bodyParser())
 app.use(session({ secret: '{18165D59-08BB-40EF-BBA4-1220B623282B}' }))
 
