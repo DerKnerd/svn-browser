@@ -24,6 +24,10 @@ exports.checkAuth = function (req, res, callback) {
     if (exports.readFromSession(req.session, 'username') == undefined || exports.readFromSession(req.session, 'password') == undefined) {
         res.redirect('/login')
     } else {
-        callback()
+        try {
+            callback()
+        } catch (ex) {
+            res.redirect('/login')
+        }
     }
 }
