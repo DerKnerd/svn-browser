@@ -49,9 +49,9 @@ exports.getSvnFile = function (path, auth, callback) {
     try {
         https.request(options, function (res) {
             var result = []
+            res.setEncoding('binary')
             try {
                 console.log('STATUS: ' + res.statusCode)
-                res.setEncoding('utf8')
                 console.log('CONTENT-TYPE: ' + res.headers['content-type'])
                 var data = ''
                 res.on('data', function (chunk) {
