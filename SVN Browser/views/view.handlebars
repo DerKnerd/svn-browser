@@ -5,13 +5,6 @@
         </div>
     </div>
 </div>
-<!--<script>
-    $(function () {
-        $('pre').each(function (i, block) {
-            hljs.highlightBlock(block);
-        });
-    });
-</script>-->
 <div class="col-md-12">
     {{#contains contenttype "image/"}}
     <img src="{{href}}" alt="{{name}}" />
@@ -22,17 +15,13 @@
     </pre>
     <script src="/javascript/ace.js"></script>
     <script src="/javascript/ext-modelist.js"></script>
-    <script src="/javascript/theme-github.js"></script>
+    <script src="/javascript/theme-clouds.js"></script>
     <script>
         var editor = ace.edit("editor");
-        editor.setTheme("ace/theme/github");
+        editor.setReadOnly(true);
+        editor.setTheme("ace/theme/clouds");
         (function () {
             var modelist = ace.require("ace/ext/modelist");
-            // the file path could come from an xmlhttp request, a drop event,
-            // or any other scriptable file loading process.
-            // Extensions could consume the modelist and use it to dynamically
-            // set the editor mode. Webmasters could use it in their scripts
-            // for site specific purposes as well.
             var filePath = "{{href}}";
             var mode = modelist.getModeForPath(filePath).mode;
             console.log(mode);
