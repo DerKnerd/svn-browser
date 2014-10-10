@@ -5,21 +5,41 @@
         </div>
     </div>
 </div>
-<script>
+<!--<script>
     $(function () {
         $('pre').each(function (i, block) {
             hljs.highlightBlock(block);
         });
     });
-</script>
+</script>-->
 <div class="col-md-12">
     {{#contains contenttype "image/"}}
     <img src="{{href}}" alt="{{name}}" />
     {{else}}
     {{#contains contenttype "text/"}}
-    <pre>
+    <pre id="editor">
 {{../content}}
     </pre>
+    <script src="/javascript/ace.js"></script>
+    <script src="/javascript/ext-modelist.js"></script>
+    <script src="/javascript/theme-github.js"></script>
+    <script>
+        var editor = ace.edit("editor");
+        editor.setTheme("ace/theme/github");
+        (function () {
+            var modelist = ace.require("ace/ext/modelist");
+            // the file path could come from an xmlhttp request, a drop event,
+            // or any other scriptable file loading process.
+            // Extensions could consume the modelist and use it to dynamically
+            // set the editor mode. Webmasters could use it in their scripts
+            // for site specific purposes as well.
+            var filePath = "{{href}}";
+            var mode = modelist.getModeForPath(filePath).mode;
+            console.log(mode);
+            editor.session.setMode(mode);
+        }());
+    </script>
+
     {{else}}
     <p>Die Datei kann im Browser nicht angezeigt werden, lad sie dir bitte runter :)</p>
     {{/contains}}

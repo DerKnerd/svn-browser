@@ -48,6 +48,7 @@ app.use(express.bodyParser())
 app.use(express.favicon())
 app.use(express.json())
 app.use(session({ secret: '{18165D59-08BB-40EF-BBA4-1220B623282B}' }))
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', routes.index)
 app.get('/search/:repo/*', routes.search)
